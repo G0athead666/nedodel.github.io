@@ -1,0 +1,65 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.kossi-btn {
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  background-color: #000;
+  font-size: 70px;
+  width: 350px;
+  height: 400px;
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.kossi-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 200px;
+  background: url('zhele.png') repeat-x;;
+  opacity: 0.8;
+}
+
+.kossi-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: url('kossi.png') center/contain repeat;
+  z-index: 1;
+}
+
+.kossi-btn .highlight {
+  position: absolute;
+  bottom: 105px;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.kossi-btn:active .highlight {
+  opacity: 1;
+  animation: change-bg 1.5s step-end infinite;
+}
+
+@keyframes change-bg {
+  0% { background: red; }
+  50% { background: blue; }
+}
