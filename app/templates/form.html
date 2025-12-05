@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Классификация ирисов</title>
+    <style>
+        /* Общие стили для всего документа */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5; /* Очень светлый серый фон, похожий на системный UI */
+            display: flex; /* Используем flexbox для центрирования содержимого */
+            justify-content: center; /* Центрируем по горизонтали */
+            align-items: flex-start; /* Выравниваем по верхнему краю по вертикали */
+            min-height: 90vh; /* Минимальная высота, чтобы flexbox работал */
+        }
+
+        /* Контейнер для всего содержимого, чтобы ограничить ширину и центрировать его */
+        .container {
+            max-width: 400px; /* Максимальная ширина, как на изображении */
+            width: 100%; /* Занимаем всю доступную ширину до max-width */
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px; /* Небольшое скругление углов */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+            margin-top: 40px; /* Отступ сверху */
+        }
+
+        /* Заголовок страницы */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 500; /* Немного менее жирный, чем по умолчанию h1 */
+        }
+
+        /* Стили для формы */
+        form {
+            margin-bottom: 20px; /* Отступ после формы */
+        }
+
+        /* Стили для меток (label) */
+        label {
+            display: block; /* Каждая метка на новой строке */
+            margin-bottom: 8px; /* Отступ между меткой и полем ввода */
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        /* Стили для полей ввода (input) */
+        input[type="number"] {
+            width: 100%; /* Занимает всю доступную ширину */
+            padding: 10px;
+            margin-bottom: 15px; /* Отступ после поля ввода */
+            border: 1px solid #ccc;
+            border-radius: 5px; /* Скругление углов полей ввода */
+            font-size: 1em;
+            box-sizing: border-box; /* Учитываем padding и border в общей ширине элемента */
+        }
+
+        /* Стили для кнопки "Отправить" */
+        button[type="submit"] {
+            display: block; /* Кнопка как блочный элемент */
+            width: auto; /* Ширина по содержимому */
+            padding: 12px 25px;
+            background-color: #007bff; /* Синий цвет */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 20px; /* Отступ перед кнопкой */
+            margin-bottom: 30px; /* Отступ после кнопки */
+            transition: background-color 0.2s ease; /* Плавный переход цвета при наведении */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Чуть темнее синий при наведении */
+        }
+
+        /* Стили для секции результата */
+        .result-section p {
+            font-size: 1.1em;
+            color: #333;
+            margin-top: 0;
+            line-height: 1.5; /* Увеличим межстрочный интервал */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Определение вида ириса</h1>
+
+        <form action="/predict" method="post">
+            <label for="sepal_length">Длина чашелистика:</label>
+            <input type="number" step="0.01" name="sepal_length" id="sepal_length" value="5.0">
+
+            <label for="sepal_width">Ширина чашелистика:</label>
+            <input type="number" step="0.01" name="sepal_width" id="sepal_width" value="3.0">
+
+            <label for="petal_length">Длина лепестка:</label>
+            <input type="number" step="0.01" name="petal_length" id="petal_length" value="1.3">
+
+            <label for="petal_width">Ширина лепестка:</label>
+            <input type="number" step="0.01" name="petal_width" id="petal_width" value="0.2">
+
+            <button type="submit">Отправить</button>
+        </form>
+
+        {% if result %}
+            <h2>Предсказанный вид ириса: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
