@@ -1,1 +1,1 @@
-# nedodel.github.io
+# Laba 6 Amin
